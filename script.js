@@ -1,9 +1,19 @@
 var apikey = "vRA0rl8tZ8x0E8jF44IwEKSTZgXZYG2T";
-var keyword = obama;
-var limit = 2;
-var beginYear = 2015;
-var endYear = 2018;
-var queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${keyword}&fl=${limit}&begin_year=${beginYear}&end_date=${endYear}&api-key=${apikey}`
+var keyword = "election";
+var limit = "2";
+var begin =  "2019" + "0101";
+var end = "2020" + "0101";
+var queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${keyword}&api-key=${apikey}`;
+
+if (begin !== "" && end !== "") {
+    queryURL = queryURL + `&begin_date=${begin}&end_date=${end}`;
+} else if (begin !== "") {
+    queryURL = queryURL + `&begin_date=${begin}`;
+} else {
+    queryURL = queryURL + `&end_date=${end}`;
+}
+
+queryURL = queryURL + "&sort=newest";
 
 $.ajax({
     url: queryURL,
