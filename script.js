@@ -1,27 +1,3 @@
-var apikey = "vRA0rl8tZ8x0E8jF44IwEKSTZgXZYG2T";
-var keyword = "election";
-var limit = "2";
-var begin =  "2019" + "0101";
-var end = "2020" + "0101";
-var queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${keyword}&api-key=${apikey}`;
-
-if (begin !== "" && end !== "") {
-    queryURL = queryURL + `&begin_date=${begin}&end_date=${end}`;
-} else if (begin !== "") {
-    queryURL = queryURL + `&begin_date=${begin}`;
-} else {
-    queryURL = queryURL + `&end_date=${end}`;
-}
-
-queryURL = queryURL + "&sort=newest";
-
-$.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    console.log(response);
-  });
-
 $(document).ready(function() {
     var query,
     startYear,
@@ -55,7 +31,7 @@ $(document).ready(function() {
             $("#articles").text(`Query: ${query}, number of records: ${numberOfRecords}, start year: ${startYear}, end year: ${endYear}`);
 
             // call Rita's function here
-            // functionName(query, numberOfRecords, beginYear, endYear);
+            fetchAPI(query, beginYear, endYear);
         } else if(task === "clear") {
             // empty the #articles element
             $("#articles").empty();
@@ -65,5 +41,28 @@ $(document).ready(function() {
             $("#start-year").val("");
             $("#end-year").val("");
         }
+    }
+
+    function fetchAPI(query, beginYear, endYear) {
+        var apikey = "vRA0rl8tZ8x0E8jF44IwEKSTZgXZYG2T";
+        var queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${apikey}`;
+        var begin = beginYear + "0101";
+        var end = endYear + "0101";
+        if (begin !== "" && end !== "") {
+            queryURL = queryURL + `&begin_date=${begin}&end_date=${end}`;
+        } else if (begin !== "") {
+            queryURL = queryURL + `&begin_date=${begin}`;
+        } else {
+            queryURL = queryURL + `&end_date=${end}`;
+        }
+        
+        queryURL = queryURL + "&sort=newest";
+        
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+          }).then(function(response) {
+            console.log(response); 
+          });
     }
 });
