@@ -1,0 +1,16 @@
+#search-term [text]
+#number [select]
+#start-year [text]
+#end-year [text]
+#search.btn [button]
+#clear.btn [button]
+
+#articles
+
+$(".btn").click
+
+var query
+var beginYear
+var endYear
+var numberOfRecords
+
