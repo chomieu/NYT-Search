@@ -6,9 +6,10 @@ $(document).ready(function() {
 
     // when the user clicks on a button, get the ID
     // this will determine if we're SEARCHing or CLEARing
-    $(".btn").click(function(e) {
+    $(".btn, button").click(function(e) {
         e.preventDefault();
         var task = $(this).attr("id");
+        // search or clear based on button ID
         handleForm( task );
     });
 
@@ -24,17 +25,21 @@ $(document).ready(function() {
         if( task === "search" ) {
             query = $("#search-term").val();
             numberOfRecords = $("#number").val();
-            beginYear = parseInt($("#start-year").val()) || null;
+            startYear = parseInt($("#start-year").val()) || null;
             endYear = parseInt($("#end-year").val()) || null;
 
-            console.log(query, numberOfRecords, startYear, endYear);
-            $("#articles").innerHTML(`Query: ${query}, number of records: ${numberOfRecords}, start year: ${startYear}, end year: ${endYear}`);
+            $("#articles").text(`Query: ${query}, number of records: ${numberOfRecords}, start year: ${startYear}, end year: ${endYear}`);
 
             // call Rita's function here
             // functionName(query, numberOfRecords, beginYear, endYear);
-        } else {
+        } else if(task === "clear") {
             // empty the #articles element
             $("#articles").empty();
+            // clear the form
+            $("#search-term").val("");
+            $("#number").val("");
+            $("#start-year").val("");
+            $("#end-year").val("");
         }
     }
 });

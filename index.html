@@ -22,16 +22,18 @@
         <form class="">
             <section class="form-group">
                 <label for="">Search-Term:</label>
-                <input class="form-control" id="search-term">
+                <!-- added type="text" -->
+                <input type="text" class="form-control" id="search-term">
             </section>
             <section class="form-group">
                 <label for="">Number of Records to Retrieve:</label>
                 <select class="form-control" id="number">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option selected>5</option>
+                    <!-- added values to options -->
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
                 </select>
             </section>
             <section class="form-group">
@@ -45,6 +47,9 @@
             <button id="search"><span class="fa fa-search"></span> Search</button>
             <button id="clear"><span class="fa fa-calendar"></span> Clear Results</button>
         </form>
+        <section id="articles">
+            <!-- results go here -->
+        </section>
     </main>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
