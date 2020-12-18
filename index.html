@@ -43,6 +43,21 @@
                     <label for="end-year">End Year (Optional):</label>
                     <input class="form-control" id="end-year">
                 </section>
+                <section class="form-group">
+                    <h4>Sort Options</h4>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="sort" id="sortDefault" value="default" checked>
+                        <label for="sort" class="form-check-label">Default</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="sort" id="sortNewest" value="newest">
+                        <label for="sort" class="form-check-label">Newest</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="sort" id="sortOldest" value="oldest">
+                        <label for="sort" class="form-check-label">Oldest</label>
+                    </div>
+                </section>
                 <section class="form-row">
                     <button class="btn bg-transparent" id="search"><span class="fa fa-search"></span> Search</button>
                     <button class="btn bg-transparent" id="clear"><span class="fa fa-trash"></span> Clear Results</button>
@@ -69,6 +84,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="script.js"></script>
 </body>
 
