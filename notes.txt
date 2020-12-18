@@ -10,7 +10,7 @@
 $(".btn").click
 
 var query
-var beginYear
+var startYear
 var endYear
 var numberOfRecords
 
