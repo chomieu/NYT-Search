@@ -13,13 +13,13 @@
 
 <body>
 
-    <header class="bg-primary text-center text-white p-5">
-        <h1><span class="far fa-newspaper"></span> New York Times Search</h1>
+    <header class="text-center text-white p-5" style="background: hsl(220, 59%, 30%)">
+        <h1><span class="far fa-newspaper"></span><b> New York Times Search</b></h1>
     </header>
 
     <main>
         <article class="container card mt-5 px-0">
-            <h5 class="card-header"><span class="far fa-newspaper"></span> Search Parameters</h5>
+            <h6 class="card-header"><span class="fas fa-calendar-day"></span> Search Parameters</h6>
             <form class="p-3">
                 <section class="form-group">
                     <label for="search-term">Search-Term:</label>
@@ -40,22 +40,24 @@
                     <input class="form-control" id="start-year">
                 </section>
                 <section class="form-group">
-                    <label for="end-year">End Year (Optional)</label>
+                    <label for="end-year">End Year (Optional):</label>
                     <input class="form-control" id="end-year">
                 </section>
                 <section class="form-row">
-                    <button class="btn btn-light" id="search"><span class="fa fa-search"></span> Search</button>
-                    <button class="btn btn-light" id="clear"><span class="fa fa-trash"></span> Clear Results</button>
+                    <button class="btn bg-transparent" id="search"><span class="fa fa-search"></span> Search</button>
+                    <button class="btn bg-transparent" id="clear"><span class="fa fa-trash"></span> Clear Results</button>
                 </section>
             </form>
         </article>
         <article class="container card my-4 px-0">
-            <h5 class="card-header"><span class="fa fa-table"></span> Top Articles</h5>
+            <h6 class="card-header"><span class="fa fa-table"></span> Top Articles</h6>
             <section class="p-3" id="articles">
                 <!-- Articles go here -->
             </section>
         </article>
     </main>
+
+    <footer class="fixed-bottom text-center p-3"><hr>Made with lots and lots of <span class="fa fa-heart"></span></footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
