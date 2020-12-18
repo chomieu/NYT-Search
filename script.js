@@ -79,25 +79,50 @@ $(document).ready(function() {
             for(var i = 0; i < limit; i++) {
                 // this is the container that will 'hold' all the data
                 // uses the news_desk, section_name, and type_of_material values as classes for custom styling (if desired)
-                var articleContainer = $("<div>", {className: `article-container ${articles[i].news_desk} ${articles[i].section_name} ${articles[i].type_of_material}`});
+                // each of these uses a regex to remove non-alphabetic characters including numbers
+                var news_desk = (articles[i].news_desk).replace(/[^a-z]/gi, '');
+                var section_name = articles[i].news_desk !== articles[i].section_name ? (articles[i].section_name).replace(/[^a-z]/gi, '') : "";
+                var type_of_material = (articles[i].type_of_material).replace(/[^a-z]/gi, '');
+                var articleContainer = $("<div>", {class: `article-container ${news_desk} ${section_name} ${type_of_material}`});
+
+                var articleTextContainer = $("<div>", {class: 'article-text'});
+
+                var image = $("<img>", {class: "article-image"});
+                    // multimedia[18] = blogSmallThumb; 20 = smallSquare168; 21 = smallSquare252
+                    image.attr("src", `https://nytimes.com/${articles[i].multimedia[20].url}`);
 
                 // full title of article (headline.main)
-                var title = $("<h3>", {className: "article-title"});
+                var title = $("<a>", {class: "article-title"});
+                    title.attr("href", articles[i].web_url);
+                    title.attr("target", "_blank");
                     title.text(articles[i].headline.main);
                 
                 // who the article was written by (byline)
-                var byline = $("<p>", {className: "article-byline"});
+                var byline = $("<p>", {class: "article-byline"});
                     byline.text(articles[i].byline.original);
                 
                 // when the article was published (pub_date); uses day.js to format it
-                var published = $("<p>", {className: "article-pubdate"});
+                var published = $("<p>", {class: "article-pubdate"});
                     published.text( dayjs(articles[i].pub_date).format("MMM D, YYYY") );
                 
                 // summary of the article (abstract or snippet)
-                var abstract = $("<p>", {className: "article-summary"});
+                var abstract = $("<p>", {class: "article-summary"});
                     abstract.text(articles[i].abstract);
+
+                // keywords
+                var keywords = $("<p>", {class: "article-keywords"});
+                var kList = [];
+                for(var j = 0; j < articles[i]["keywords"].length; j++) {
+                    // this creates a button so the user can actually perform a NEW search
+                    // with the given keyword as the new search term
+                    var term = (articles[i].keywords[j].value).trim();
+                    kList.push(`<a class="btn new-search" data-query="${term}">${term}</a>`);
+                }
+                keywords.append( kList.join(",") );
+
+                articleTextContainer.append(title, byline, published, abstract, keywords);
                 
-                articleContainer.append(title, byline, published, abstract);
+                articleContainer.append(image, articleTextContainer);
 
                 $("#articles").append(articleContainer);
             }

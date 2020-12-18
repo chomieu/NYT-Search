@@ -1,0 +1,55 @@
+/* define variables in :root to access them in any declaration */
+:root {
+    --navy:  hsl(220, 59%, 30%);
+    --link: dodgerblue;
+}
+
+header { background: var(--navy); }
+
+.article-container {
+    padding: 1rem;
+    clear: both;
+    vertical-align: middle;
+}
+
+.article-container + .article-container {
+    /* margin-top: 1rem; */
+    border-top: 1px solid gainsboro;
+}
+
+.article-image {
+    float: left;
+    margin: 0 1rem 1rem 0;
+}
+
+.article-title {
+    color: var(--navy);
+    display: block;
+    font-size: 2rem;
+}
+
+.article-byline,
+.article-pubdate {
+    display: inline-block;
+}
+
+.article-pubdate {
+    margin-left: 0.25rem;
+    font-style: italic;
+    color: dimgray;
+}
+
+.article-keywords {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.article-keywords a.btn.new-search {
+    margin: 0;
+    padding: 0;
+    color: var(--link);
+}
+
+.article-keywords a.btn.new-search + a.btn.new-search {
+    margin-left: 0.25rem;
+}
