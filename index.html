@@ -18,33 +18,39 @@
         <h1><span class="far fa-newspaper"></span> New York Times Search</h1>
     </header>
 
-    <main>
-        <form class="">
+    <main class="container">
+        <form class="m-auto card p-3">
+            <h5 class="card-header"><span class="far fa-newspaper"></span> Search Parameters</h5>
             <section class="form-group">
-                <label for="">Search-Term:</label>
-                <input class="form-control" id="search-term">
+                <label for="search-term">Search-Term:</label>
+                <input type="text" class="form-control" id="search-term">
             </section>
             <section class="form-group">
-                <label for="">Number of Records to Retrieve:</label>
+                <label for="number">Number of Records to Retrieve:</label>
                 <select class="form-control" id="number">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option selected>5</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
                 </select>
             </section>
             <section class="form-group">
-                <label for="">Start Year (Optional):</label>
+                <label for="start-year">Start Year (Optional):</label>
                 <input class="form-control" id="start-year">
             </section>
             <section class="form-group">
-                <label for="">End Year (Optional)</label>
+                <label for="end-year">End Year (Optional)</label>
                 <input class="form-control" id="end-year">
             </section>
-            <button id="search"><span class="fa fa-search"></span> Search</button>
-            <button id="clear"><span class="fa fa-calendar"></span> Clear Results</button>
+            <section class="form-row">
+                <button class="" id="search"><span class="fa fa-search"></span> Search</button>
+                <button class="" id="clear"><span class="fa fa-trash"></span> Clear Results</button>
+            </section>
         </form>
+        <section id="articles">
+
+        </section>
     </main>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
