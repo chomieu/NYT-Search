@@ -28,10 +28,9 @@ $(document).ready(function() {
             startYear = parseInt($("#start-year").val()) || null;
             endYear = parseInt($("#end-year").val()) || null;
 
-            $("#articles").text(`Query: ${query}, number of records: ${numberOfRecords}, start year: ${startYear}, end year: ${endYear}`);
-
             // call Rita's function here
-            fetchAPI(query, beginYear, endYear);
+            fetchAPI(query, numberOfRecords, startYear, endYear);
+
         } else if(task === "clear") {
             // empty the #articles element
             $("#articles").empty();
@@ -43,16 +42,17 @@ $(document).ready(function() {
         }
     }
 
-    function fetchAPI(query, beginYear, endYear) {
+    function fetchAPI(query, limit, beginYear, endYear) {
         var apikey = "vRA0rl8tZ8x0E8jF44IwEKSTZgXZYG2T";
         var queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${apikey}`;
-        var begin = beginYear + "0101";
-        var end = endYear + "0101";
+        var begin = (beginYear !== null) ? beginYear + "0101" : "";
+        var end = (endYear !== null) ? endYear + "0101" : "";
+        
         if (begin !== "" && end !== "") {
             queryURL = queryURL + `&begin_date=${begin}&end_date=${end}`;
         } else if (begin !== "") {
             queryURL = queryURL + `&begin_date=${begin}`;
-        } else {
+        } else if (end !== "") {
             queryURL = queryURL + `&end_date=${end}`;
         }
         
@@ -63,6 +63,9 @@ $(document).ready(function() {
             method: "GET"
           }).then(function(response) {
             console.log(response); 
+
+            var articles = response.response.docs;
+            console.log(articles);
           });
     }
 });
